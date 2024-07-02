@@ -1,0 +1,40 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Song List 2</title>
+<style>
+	body {font-family: Arial, sans-serif;}
+	.song {margin: 20px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;}
+	.song h2 {font-size: 1.5em;}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+	$(document).ready(function() {
+		$.get('https://ctakla.github.io/assignment5/songs.json', function(data) {
+			songList = data;
+			songListHTML = '';
+			songList.forEach(function(song) {
+				songListHTML += `
+					<div class="song">
+						<h2>${song.title}</h2>
+						<p><strong>Artist:</strong> ${song.artist}</p>
+						<p><strong>Genre:</strong> ${song.genre.join(", ")}</p>
+						<p><strong>Released ${song.year}</strong></p>
+					</div>
+				`;
+			});
+			document.getElementById('songList').innerHTML = songListHTML;
+		});
+	});
+</script>
+
+</head>
+<body>
+
+<h1>Song List 2</h1>
+
+<div id="songList"></div>
+
+</body>
+</html>
