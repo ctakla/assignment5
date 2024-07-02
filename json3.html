@@ -1,0 +1,59 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Song List 3</title>
+<style>
+    body {font-family: Arial, sans-serif;}
+    .song {margin: 10px 0; padding: 5px;}
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function() {
+        $.get('https://ctakla.github.io/assignment5/songs.json', function(data) {
+            songList = data;
+
+            var genres = [];
+            $.each(songList, function(index, song) {
+                $.each(song.genre, function(idx, genre) {
+                    if ($.inArray(genre, genres) === -1) {
+                        genres.push(genre);
+                    }
+                });
+            });
+
+            var genreDropdown = $('#genreSelect');
+            $.each(genres, function(index, genre) {
+                genreDropdown.append($('<option></option>').text(genre));
+            });
+
+            $('#filterButton').click(function() {
+                var selectedGenre = genreDropdown.val();
+                var filteredSongs = songList.filter(function(song) {
+                    return song.genre.includes(selectedGenre);
+                });
+
+                var filteredSongsHTML = '';
+                $.each(filteredSongs, function(index, song) {
+                    filteredSongsHTML += `<div class="song">${song.title}</div>`;
+                });
+                $('#filteredSongs').html(filteredSongsHTML);
+            });
+        });
+    });
+</script>
+</head>
+<body>
+
+<h1>Song List 3</h1>
+
+<div>
+    <label for="genreSelect">Select Genre:</label>
+    <select id="genreSelect"></select>
+    <button id="filterButton">Filter</button>
+</div>
+
+<div id="filteredSongs"></div>
+
+</body>
+</html>
