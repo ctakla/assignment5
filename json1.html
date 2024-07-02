@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Song List</title>
+</head>
+<body>
+<h1>Song List</h1>
+
+<pre id="jsonSongList"></pre>
+	<script>
+		songList = [
+		{
+			"title": "Bohemian Rhapsody",
+			"artist": "Queen",
+			"year": 1975,
+			"genre": ["Rock"]
+		},
+		{
+			"title": "She",
+			"artist": "Harry Styles",
+			"year": 2019,
+			"genre": ["Alternative", "Indie"]
+		},
+		{
+			"title": "Bodyguard",
+			"artist": "Beyonce",
+			"year": 2024,
+			"genre": ["Country", "Pop"]
+		},
+		{
+			"title": "Flores",
+			"artist": "Latin Mafia",
+			"year": 2023,
+			"genre": ["Reggaeton"]
+		},
+		{
+			"title": "Spooky",
+			"artist": "Dusty Springfield",
+			"year": 1996,
+			"genre": ["Soul", "Pop"]
+		},
+		{
+			"title": "Talk 2 U",
+			"artist": "Brent Faiyaz",
+			"year": 2017,
+			"genre": ["R&B"]
+		},
+		{
+			"title": "POSE",
+			"artist": "MICHELLE",
+			"year": 2022,
+			"genre": ["Pop"]
+		},
+		{
+			"title": "Sexy Villain",
+			"artist": "Remi Wolf",
+			"year": 2021,
+			"genre": ["Alternative", "Indie", "Pop"]
+		},
+		{
+			"title": "Kamikaze",
+			"artist": "Omar Apollo",
+			"year": 2020,
+			"genre": ["Alternative", "Indie"]
+		},
+		{
+			"title": "Last Call",
+			"artist": "Kanye West",
+			"year": 2004,
+			"genre": ["Hip-Hop", "R&B"]
+		}
+	];
+
+		jsonString = JSON.stringify(songList, null, 2);
+		document.getElementById('jsonSongList').textContent = jsonString;
+	</script>
+</body>
+</html>
